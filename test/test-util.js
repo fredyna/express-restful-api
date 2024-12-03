@@ -27,3 +27,31 @@ export const getTestUser = async () => {
         }
     });
 }
+
+export const removeAllTestContact = async () => {
+    return prismaClient.contact.deleteMany({
+        where: {
+            username: 'test'
+        }
+    });
+}
+
+export const createTestContact = async () => {
+   return prismaClient.contact.create({
+       data: {
+           username: "test",
+           first_name: "Test",
+           last_name: "Name",
+           email: "test@test.com",
+           phone: "0890000001"
+       }
+   })
+}
+
+export const getTestContact = async () => {
+    return prismaClient.contact.findFirst({
+       where: {
+           username: 'test'
+       }
+    });
+}
